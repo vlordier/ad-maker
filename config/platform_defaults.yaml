@@ -1,0 +1,19 @@
+platforms:
+  TikTok: # Short-form, high-engagement platform
+    ad_duration: 15
+    scene_count: 3
+    guidelines:
+      headline_length: 50
+      description_length: 100
+  Facebook: # Longer-form, narrative-driven platform
+    ad_duration: 30
+    scene_count: 5
+    guidelines:
+      headline_length: 60
+      description_length: 150
+  Instagram: # Visual-centric, storytelling platform
+    ad_duration: 60
+    scene_count: 7
+    guidelines:
+      headline_length: 70
+      description_length: 200
