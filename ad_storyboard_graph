@@ -1,0 +1,25 @@
+// Ad Storyboard Design Flow
+digraph {
+	size="10,10"
+	ask_for_ad_info [label=ask_for_ad_info]
+	supervisor_1 [label=supervisor_1]
+	generate_ad_concept [label=generate_ad_concept]
+	supervisor_2 [label=supervisor_2]
+	validate_ad_concept [label=validate_ad_concept]
+	supervisor_3 [label=supervisor_3]
+	generate_storyboard [label=generate_storyboard]
+	supervisor_4 [label=supervisor_4]
+	validate_storyboard [label=validate_storyboard]
+	supervisor_final [label=supervisor_final]
+	supervisor_1 -> generate_ad_concept
+	supervisor_3 -> generate_storyboard
+	validate_ad_concept -> supervisor_3
+	generate_storyboard -> supervisor_4
+	supervisor_2 -> validate_ad_concept
+	validate_storyboard -> supervisor_final
+	supervisor_4 -> validate_storyboard
+	ask_for_ad_info -> supervisor_1
+	generate_ad_concept -> supervisor_2
+	supervisor_final -> __end__
+	__start__ -> ask_for_ad_info
+}

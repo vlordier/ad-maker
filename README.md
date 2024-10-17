@@ -1,42 +1,72 @@
-# Ad Project: Subgraphs with Retry and Supervisor Logic
+# Ad Storyboard Design Agent
 
-This project demonstrates a LangGraph-based workflow with retry loops in subgraphs, backtracking logic, and a supervisor node that ensures consistency across steps.
+This project implements an **Ad Storyboard Design Agent** using **LangGraph** and **LLM prompting**. It follows a defined process of collecting user inputs, generating an Ad Concept, and creating a scene-wise storyboard.
 
-## Workflow Overview
+The process is human-in-the-loop (HITL), where user validation is required at several stages, and retries are implemented for refining the outputs. **Backtracking** and a **supervisor node** are used to handle retries and enable the user to go back to earlier steps when necessary.
 
-The workflow consists of three main steps, each running a subgraph that can retry tasks in case of failure. A supervisor checks the consistency of each step, and if inconsistencies are found, the workflow backtracks to reprocess the relevant step.
+## Table of Contents
 
-### Main Graph
-```mermaid
-graph TD
-    A[START] --> B[Step 1: Run Subgraph]
-    B --> C[Supervisor Check]
-    C -->|Consistent| D[Step 2: Run Subgraph]
-    C -->|Inconsistent| B[Backtrack to Step 1]
-    D --> E[Supervisor Check]
-    E -->|Consistent| F[Step 3: Run Subgraph]
-    E -->|Inconsistent| D[Backtrack to Step 2]
-    F --> G[Supervisor Check]
-    G -->|Consistent| H[END]
-    G -->|Inconsistent| F[Backtrack to Step 3]
+- [Features](#features)
+- [Flow Overview](#flow-overview)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Graph Flow Visualization](#graph-flow-visualization)
+- [File Descriptions](#file-descriptions)
+
+## Features
+
+- **Ad Concept Generation:** Uses LLMs to generate Ad Concepts based on user input.
+- **Storyboard Generation:** Automatically generates a scene-wise storyboard based on the Ad Duration.
+- **Human-in-the-Loop (HITL):** User validation at multiple stages.
+- **Backtracking & Retry:** Allows user feedback and retries if a step fails, and users can backtrack to earlier steps.
+- **Supervisor Nodes:** Supervisors manage flow control and check the success of each step.
+- **Graph Flow Rendering:** Visual representation of the LangGraph flow.
+
+## Flow Overview
+
+The Ad Storyboard Design Agent works through the following steps:
+
+1. **Collect User Input:**
+   - Ask the user for Ad Duration (0-60 seconds), Ad Channel (Facebook, Instagram, TikTok), and Ad Theme (50-word description).
+   - Validate the inputs using Pydantic.
+
+2. **Generate Ad Concept:**
+   - Trigger an LLM (like GPT-4) to generate an Ad Concept based on the user’s inputs.
+
+3. **Validate Ad Concept:**
+   - Present the Ad Concept to the user for validation.
+   - If the user rejects the concept, allow retry or backtrack to the input collection.
+
+4. **Generate Storyboard:**
+   - Use the Ad Concept and Ad Duration to generate a storyboard, with multiple scenes based on the Ad Duration.
+
+5. **Validate Storyboard:**
+   - Present the storyboard to the user for validation.
+   - Allow feedback and iteration.
+
+6. **Supervisors & Backtracking:** At each key point, a supervisor node will allow users to retry or backtrack.
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   cd ad-storyboard-agent
+
+
+## Graph Visualisation
+1. Use GraphViz
+- On Ubuntu
+```
+sudo apt-get install graphviz
 ```
 
-# Subgaph with Retry Logic  
-```mermaid
-graph TD
-    S1[Start Subgraph] --> T1[Task Step]
-    T1 -->|Success| S2[Next Step]
-    T1 -->|Failure| R1[Retry Logic]
-    R1 -->|Retries Left| T1[Retry Task]
-    R1 -->|Max Retries Reached| S2[Proceed]
-    S2 --> S3[End Subgraph]
+- On MacOS using Homebrew
+```
+brew install graphviz
 ```
 
-## Supervisor and Backtracking Logic
-
+2. Generate images
 ```
-graph TD
-    S1[Supervisor Node] --> C1[Check Consistency]
-    C1 -->|Inconsistent| B1[Backtrack to Previous Step]
-    C1 -->|Consistent| N1[Proceed to Next Step]
+python src/render_graph.py
 ```
