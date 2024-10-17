@@ -6,6 +6,12 @@ The **Video Cutdown Generation Agent** is responsible for creating shorter versi
 ---
 
 #### **2.1. Input Data**:
+
+The input data for the Video Cutdown Generation Agent is critical for ensuring that the cutdowns are both effective and aligned with user expectations. This data includes:
+
+- **Master Video**: The original video file or metadata, which serves as the source material for the cutdowns. This can include details such as resolution, frame rate, and format.
+- **Target Durations**: A list of desired durations for the cutdown versions, allowing for flexibility in meeting different platform requirements.
+- **Key Scenes**: A prioritized list of scenes that must be retained in each cutdown, ensuring that the most important content is preserved.
 The agent receives the following:
 - **Master Video**: The original video file or metadata (such as URL or file path).
 - **Target Durations**: A list of target durations for the cutdown versions (e.g., 15 seconds, 30 seconds).
@@ -14,6 +20,13 @@ The agent receives the following:
 ---
 
 #### **2.2. Key Scene Detection**:
+
+The Key Scene Detection Agent is responsible for identifying the most important scenes in the master video. This process involves analyzing both visual and audio cues to determine scene relevance.
+
+- **Detailed Functionality**:
+  - **Visual Analysis**: Uses computer vision techniques to detect key visual elements, such as brand logos and product shots.
+  - **Audio Analysis**: Analyzes audio tracks to identify critical dialogue or voiceovers that should be retained.
+  - **Relevance Scoring**: Assigns a relevance score to each scene, helping prioritize which scenes to include in the cutdowns.
 - **Agent Name**: `KeySceneDetectionAgent`
   - **Task**: Identify the most important scenes in the master video by using visual and audio cues, such as:
     1. **Brand Logo Appearances**
@@ -24,6 +37,14 @@ The agent receives the following:
 ---
 
 #### **2.3. Cutdown Generation**:
+
+The Cutdown Generation Agent is tasked with creating shorter versions of the master video while preserving key messages and visuals. This agent ensures that the cutdowns are both engaging and compliant with platform requirements.
+
+- **Detailed Functionality**:
+  - **Scene Selection**: Chooses the most relevant scenes based on the Key Scene Detection Agent's analysis, ensuring that important content is retained.
+  - **Duration Management**: Adjusts scene lengths to fit within the target durations, using techniques such as trimming and fast-forwarding.
+  - **Transition Smoothing**: Adds smooth transitions between scenes to ensure a cohesive viewing experience.
+  - **Output Formatting**: Produces final cutdown videos in the required format, complete with metadata outlining the included scenes.
 - **Agent Name**: `CutdownGeneratorAgent`
   - **Task**: Based on the selected key scenes and target durations, this agent generates cutdown versions of the master video.
   - **Constraints**:
@@ -31,6 +52,9 @@ The agent receives the following:
     - The cutdown version should fit within the target duration.
   - **Transition Smoothing**: Adds smooth transitions between the remaining scenes to ensure that the video does not appear disjointed after being cut down.
   - **Output Format**: Produces a final cutdown video in MP4 format, with metadata outlining the included scenes.
+  - **Semantic Matching**: Supports semantic matching for user-specified cutdown requests, ensuring that the content aligns with user-defined themes or keywords. This involves analyzing the semantic content of video segments to match user preferences, enhancing the relevance and impact of the cutdowns. The process leverages LangGraph to manage the flow of data and decisions, ensuring that each step in the cutdown generation is logically connected and validated.
+
+  - **Advanced Scene Selection**: Incorporates user preferences for scene selection, allowing for more personalized cutdowns. Users can specify scenes based on semantic content, such as "scenes with cityscapes" or "scenes with dialogue."
 
 ---
 
@@ -153,3 +177,65 @@ The **Asset & Template Fitting Process** automates the adaptation of creative as
     - **Text Overlay Adjustments**: Automatically adjusts the position, font size, and color of text overlays to ensure readability and compliance with platform guidelines.
     - **Dynamic Motion Graphics**: For video assets, this agent can add motion graphics that enhance the visual appeal, making the asset more engaging.
     - **Localized Variants**: Adjusts assets for localization purposes, such as language adaptation or region-specific guidelines (e.g., different legal disclaimers in various regions).
+# Video Cutdown Generation
+
+## Overview
+
+The Video Cutdown Generation process involves creating shorter versions of longer ad videos while preserving key messages and visuals. This is achieved through scene selection, duration management, and transition smoothing.
+
+## Key Features
+
+- **Semantic Cutdown Requests**: Allows users to request cutdowns based on semantic content, such as "10s of city walking scenes."
+- **N x M Matching**: Matches storyboards with the best video clips to ensure optimal content alignment.
+
+## Workflow
+
+1. **Input Video**: The original video is segmented into clips.
+2. **Scene Selection**: Key scenes are identified and selected based on user requests and semantic analysis.
+3. **Cutdown Generation**: Selected scenes are compiled into a cohesive cutdown video.
+
+## Agents Involved
+
+- **KeySceneDetectionAgent**: Identifies important scenes using visual and audio analysis.
+- **CutdownGeneratorAgent**: Generates cutdown versions based on selected scenes and target durations.
+
+## Product Requirements
+
+### Functional Requirements
+
+1. **Semantic Cutdown Requests**:
+   - Users must be able to specify semantic content for cutdowns, such as specific scenes or themes.
+   - The system should support natural language processing to interpret user requests accurately.
+
+2. **Scene Selection and Duration Management**:
+   - The system must identify key scenes based on user input and predefined criteria.
+   - Duration management should ensure that cutdowns meet specified time constraints without losing essential content.
+
+3. **Transition Smoothing**:
+   - Implement smooth transitions between scenes to maintain video coherence.
+   - Transitions should be customizable based on user preferences.
+
+4. **Output Formatting**:
+   - Provide cutdown videos in multiple formats (e.g., MP4, AVI) to meet platform requirements.
+   - Include metadata detailing scene content and transitions.
+
+### Non-Functional Requirements
+
+1. **Performance**:
+   - The system should process video cutdowns within a reasonable time frame, ideally under 5 minutes for a 60-second video.
+
+2. **Scalability**:
+   - Must handle multiple concurrent requests without degradation in performance.
+
+3. **Usability**:
+   - The interface should be intuitive, allowing users to easily specify cutdown requirements.
+
+4. **Reliability**:
+   - Ensure high availability and minimal downtime, with robust error handling and recovery mechanisms.
+
+## Challenges
+
+- Ensuring semantic relevance in cutdowns.
+- Balancing scene selection with duration constraints.
+- Handling diverse video formats and resolutions.
+- Maintaining video quality during cutdown processing.

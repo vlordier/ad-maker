@@ -1,0 +1,21 @@
+scenes:
+  - id: 1
+    headline: "Winter Indulgence"
+    description: "A stylish woman breaks open a Magnum ice cream bar and enjoys it while walking through the city."
+    openers:
+      - type: "video"
+    assets:
+      images: ["assets/images/product.png"]
+      videos: ["assets/videos/intro.mp4"]
+  - id: 2
+    headline: "More is More"
+    description: "The ad concludes by showcasing three flavors of Magnum ice cream in colorful cartons."
+    assets:
+      images: ["assets/images/logo.png"]
+      videos: ["assets/videos/outro.mp4"]templates:
+  - id: 3
+    headline: "Summer Delight"
+    description: "A group of friends enjoy Magnum ice cream bars on a sunny beach."
+    assets:
+      images: ["assets/images/product.png"]
+      videos: ["assets/videos/intro.mp4"]

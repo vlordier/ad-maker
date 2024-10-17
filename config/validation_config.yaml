@@ -1,0 +1,32 @@
+validation:
+  rules:
+  - name: Aspect Ratio Compliance
+    description: Ensure all assets fit the platform's aspect ratio.
+  - name: Duration Check
+    description: Ensure video duration does not exceed platform limits.
+  - name: Resolution Compliance
+    description: Ensure all assets meet the minimum resolution requirements.
+  - name: File Size Limit
+    description: Ensure all assets do not exceed the maximum file size allowed.
+  - name: Format Validation
+    description: Ensure all assets are in the correct format (e.g., JPEG, MP4).
+  - name: Content Guidelines
+    description: Ensure all content adheres to platform-specific content guidelines.
+  - name: Semantic Relevance
+    description: Ensure video segments match the semantic content requested by the user.
+  - name: Scene Transition Smoothness
+    description: Ensure transitions between scenes are smooth and coherent.
+  - name: Storyboard Consistency
+    description: Ensure that storyboards and assets are consistent and aligned with the narrative.
+  - name: Text Slogan Relevance
+    description: Ensure text slogans are semantically relevant to the storyboard.
+  - name: Emotional Engagement
+    description: Ensure each scene evokes the intended emotional response from the audience.
+  - name: Visual Hierarchy
+    description: Ensure the most important visual elements are prominently featured and guide the viewer's eye.
+  - name: Brand Voice Consistency
+    description: Ensure all content maintains a consistent brand voice and tone.
+  - name: Cultural Sensitivity
+    description: Ensure all content is culturally sensitive and appropriate for the target audience.
+  - name: Innovative Storytelling
+    description: Encourage creative and innovative storytelling techniques that captivate the audience.

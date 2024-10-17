@@ -1,6 +1,13 @@
 ### 1. **A: Ad Storyboard Design Agent**
 
 #### **Overview**:
+
+The Ad Storyboard Design Agent is a sophisticated tool designed to automate the creation of ad storyboards for various digital platforms. By leveraging advanced AI technologies, this agent ensures that the generated storyboards are both creative and compliant with platform-specific guidelines.
+
+- **Key Features**:
+  - **AI-Driven Creativity**: Utilizes GPT-4 and Few-Shot Learning to generate innovative ad concepts that resonate with target audiences.
+  - **Platform Compliance**: Ensures that all storyboards adhere to the unique requirements of platforms like TikTok, Instagram, and Facebook.
+  - **User-Centric Design**: Incorporates user feedback to refine storyboards, ensuring they meet user expectations and strategic goals.
 The Ad Storyboard Design Agent automates the creation of ad storyboards for platforms like TikTok, Instagram, and Facebook. It uses AI technologies such as GPT-4, Few-Shot Learning, and ReACT to generate, validate, and refine ad concepts, ensuring they meet platform-specific guidelines and user-defined themes.
 
 #### **Objectives**:
@@ -9,9 +16,18 @@ The Ad Storyboard Design Agent automates the creation of ad storyboards for plat
 - Enhance creativity using AI-driven approaches.
 
 #### **Objective**:
-The **Ad Storyboard Design Agent** is designed to revolutionize the creation of ad storyboards by automating the process for various digital platforms such as TikTok, Instagram, and Facebook. This agent leverages cutting-edge AI technologies, including **Large Language Models (LLMs)** like **GPT-4**, **Few-Shot Learning**, **ReACT (Reasoning and Acting)**, and **.txt Outlines** to deliver high-quality, platform-specific outputs. The agent's primary responsibilities encompass generating multi-scene ad concepts, validating these concepts, managing retries upon validation failures, and ensuring compliance with platform-specific guidelines and user-defined themes.
+The **Ad Storyboard Design Agent** is designed to revolutionize the creation of ad storyboards by automating the process for various digital platforms such as TikTok, Instagram, and Facebook. This agent leverages cutting-edge AI technologies, including **Large Language Models (LLMs)** like **GPT-4**, **Few-Shot Learning**, **ReAct (Reasoning and Acting)**, and **.txt Outlines** to deliver high-quality, platform-specific outputs. The agent's primary responsibilities encompass generating multi-scene ad concepts, validating these concepts, managing retries upon validation failures, and ensuring compliance with platform-specific guidelines and user-defined themes.
 
 #### **Detailed Task Description**:
+
+The Ad Storyboard Design Agent is responsible for developing a comprehensive system that can generate, validate, and refine ad storyboards. This system is designed to handle a wide range of inputs and produce high-quality outputs that align with user-defined themes and platform guidelines.
+
+- **Task Breakdown**:
+  - **User Input Collection**: Gathers detailed inputs from users, including ad theme, platform, and duration.
+  - **Ad Concept Generation**: Develops a high-level ad concept using AI-driven techniques.
+  - **Storyboard Scene Generation**: Breaks down the ad concept into detailed scenes, each with a clear narrative purpose.
+  - **Validation Process**: Ensures that all scenes meet predefined criteria and platform standards using Pydantic models for robust validation. This includes checking for compliance with character limits, content guidelines, and visual requirements.
+  - **Retry Mechanism**: Automatically corrects and regenerates invalid scenes, minimizing errors and enhancing output quality.
 The task involves developing a sophisticated system capable of generating, validating, and refining ad storyboards. This system should adeptly interpret user inputs, generate creative content, and ensure that the content adheres to specific criteria. The process is meticulously divided into several key steps, each managed by a specialized agent.
 
 #### **Task Breakdown and Workflow**:
@@ -77,8 +93,17 @@ The task involves developing a sophisticated system capable of generating, valid
 5. **Retry Mechanism**: Efficiently correct and regenerate any scenes that fail validation.
 
 #### **Approaches and Techniques**:
+
+The Ad Storyboard Design Agent employs a variety of approaches and techniques to ensure the creation of high-quality ad storyboards. These include:
+
+- **Rule-Based Approach**: Utilizes predefined rules and templates to generate ad content, ensuring consistency and compliance with platform guidelines.
+- **AI-Driven Approach**: Leverages advanced AI models like GPT-4 to generate creative and contextually relevant content, allowing for greater flexibility and adaptability.
+- **Iterative Feedback Loop**: Continuously refines storyboards based on user feedback, ensuring that the final product aligns with user expectations and platform requirements.
+- **Hybrid Approach**: Combines rule-based and AI-driven methods to balance creativity and control, providing a comprehensive solution for ad storyboard design.
 - **Rule-Based Approach**: Utilize predefined rules and templates to generate ad content. This approach is straightforward but may lack creativity.
-- **AI-Driven Approach**: Harness AI models like GPT-4 to generate content. This allows for enhanced creativity and adaptability but requires meticulous prompt engineering and validation.
+- **AI-Driven Approach**: Harness AI models like GPT-4 to generate content. This allows for enhanced creativity and adaptability but requires meticulous prompt engineering and validation. The approach includes handling user feedback for iterative improvements.
+
+- **Iterative Feedback Loop**: Continuously refines the storyboard based on user feedback, ensuring that the final product aligns with user expectations and platform requirements. This includes the ability to regenerate specific scenes or adjust the overall narrative flow.
 - **Hybrid Approach**: Integrate rule-based and AI-driven methods to balance creativity and control.
 
 #### **Comprehensive Workflow**:
@@ -94,6 +119,8 @@ graph TD;
     F --> H[End];
 ```
 
+- **Flow Diagrams**: These diagrams illustrate the process flow, making it easier to understand complex interactions and dependencies. They provide a visual representation of the steps involved, helping users and developers alike to grasp the workflow quickly.
+
 - **Start**: Initiates the process.
 - **User Input Collection**: Gathers and validates user inputs.
 - **Ad Concept Generation**: Creates a high-level concept.
@@ -103,6 +130,51 @@ graph TD;
 - **End**: Finalizes the storyboard.
 
 #### **Input and Output Data Structures**:
+
+The Ad Storyboard Design Agent uses structured data to ensure that inputs are processed efficiently and outputs are generated accurately. This includes:
+
+- **User Input**: A JSON object containing key information such as ad theme, platform, and duration. This data is used to guide the ad concept generation process.
+  ```json
+  {
+    "ad_theme": "Winter clothing sale",
+    "platform": "TikTok",
+    "ad_duration": 30
+  }
+  ```
+
+- **Generated Scene**: A JSON object representing a single scene within the storyboard. This includes details such as the headline, description, and visual elements.
+  ```json
+  {
+    "scene": {
+      "headline": "Winter Escape",
+      "description": "A woman steps out into the snow wearing the new winter collection coat. The camera zooms in on the intricate details of the coat's design.",
+      "visual_element": "Close-up of coat details"
+    }
+  }
+  ```
+
+- **Validation Feedback**: A JSON object containing detailed error messages for scenes that fail validation. This feedback is used to guide corrections and improve the final output.
+  ```json
+  {
+    "status": "invalid",
+    "errors": [
+      {
+        "field": "headline",
+        "message": "Headline exceeds maximum length."
+      }
+    ]
+  }
+  ```
+- **User Input**:
+  ```json
+  {
+    "ad_theme": "Winter clothing sale",
+    "platform": "TikTok",
+    "ad_duration": 30
+  }
+  ```
+
+#### **Illustrative Examples**:
 - **User Input**:
   ```json
   {
@@ -239,8 +311,9 @@ The agent collects the following essential input data from the user:
     - **Feedback Loop**: Incorporate user feedback to iteratively improve the storyboard. If a user suggests changes, the system should adapt and regenerate the storyboard accordingly.
 
 #### **Conditions, Error Handling, and Feedback Loops**:
-- **Validation Errors**: If a scene fails validation, detailed error messages are generated to guide corrections.
-- **Retry Logic**: The system uses ReACT to intelligently adjust and retry failed scenes, ensuring efficient error correction.
+- **Validation Errors**: If a scene fails validation, detailed error messages are generated to guide corrections. These messages specify the exact issue and suggest possible solutions, allowing users to make precise adjustments.
+- **Retry Logic**: The system uses ReACT to intelligently adjust and retry failed scenes, ensuring efficient error correction. This includes automatic adjustments based on error feedback and user input.
+- **Feedback Loops**: Implemented to refine outputs based on user input and platform performance. Users can provide feedback on generated content, which is then used to iteratively improve the storyboard. This loop ensures that the final product aligns with user expectations and platform requirements.
 - **Feedback Loop**: Incorporate user feedback to iteratively improve the storyboard. If a user suggests changes, the system should adapt and regenerate the storyboard accordingly.
 - **Validation Errors**: If a scene fails validation, detailed error messages are generated to guide corrections.
 - **Retry Logic**: The system uses ReACT to intelligently adjust and retry failed scenes, ensuring efficient error correction.
@@ -294,3 +367,68 @@ The agent collects the following essential input data from the user:
       ```
   - **ReACT Integration**: The agent uses **ReACT** to reason through the failed validation and generate a correction, rather than simply retrying without adjustment.
 
+# Ad Storyboard Design Agent
+
+## Overview
+
+The Ad Storyboard Design Agent automates the creation of ad storyboards for various digital platforms. It leverages AI technologies to generate, validate, and refine ad concepts, ensuring compliance with platform-specific guidelines.
+
+## Key Features
+
+- **AI-Driven Creativity**: Utilizes GPT-4 and Few-Shot Learning for innovative ad concepts.
+- **User-Centric Design**: Incorporates user feedback for refinement.
+
+## Workflow
+
+1. **User Input Collection**: Gathers detailed inputs from users.
+2. **Ad Concept Generation**: Develops high-level ad concepts.
+3. **Storyboard Scene Generation**: Breaks down concepts into scenes.
+4. **Validation and Retry**: Ensures scenes meet criteria and regenerates if necessary.
+
+## Agents Involved
+
+- **RequestRewriterAgent**: Transforms user inputs.
+- **GenerateAdConceptAgent**: Creates ad concepts.
+- **StoryboardGenerationAgent**: Develops scenes.
+- **ValidateStoryboardAgent**: Validates scenes.
+
+## Product Requirements
+
+### Functional Requirements
+
+1. **User Input Collection**:
+   - Collect detailed user inputs, including ad theme, platform, and duration.
+   - Validate inputs against platform-specific guidelines.
+
+2. **Ad Concept Generation**:
+   - Use AI to generate creative ad concepts that align with user inputs.
+   - Allow for iterative refinement based on user feedback.
+
+3. **Storyboard Scene Generation**:
+   - Break down ad concepts into detailed scenes with clear narratives.
+   - Ensure scenes are coherent and contribute to the overall ad storyline.
+
+4. **Validation and Retry Mechanism**:
+   - Validate scenes against predefined criteria and platform standards.
+   - Implement a retry mechanism to correct and regenerate invalid scenes.
+
+### Non-Functional Requirements
+
+1. **Performance**:
+   - Generate ad concepts and storyboards within a few seconds to ensure a smooth user experience.
+
+2. **Scalability**:
+   - Support multiple users and concurrent storyboard generation requests.
+
+3. **Usability**:
+   - Provide a user-friendly interface for input collection and feedback.
+
+4. **Reliability**:
+   - Ensure consistent output quality and robust error handling.
+
+## Challenges
+
+- Balancing creativity with compliance.
+- Efficiently handling user feedback and adjustments.
+- Ensuring platform-specific compliance across diverse requirements.
+- Maintaining high-quality outputs with minimal manual intervention.

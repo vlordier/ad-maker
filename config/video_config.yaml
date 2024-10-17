@@ -1,0 +1,4 @@
+video:
+  type: "ad"  # Options: ad, tutorial, promo
+  duration: 30  # Duration in seconds
+  format: "mp4"  # Video format

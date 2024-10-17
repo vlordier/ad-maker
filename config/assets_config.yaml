@@ -1,0 +1,11 @@
+assets:
+  images:
+  - path: assets/images/logo.png
+    description: Brand logo
+  - path: assets/images/product.png
+    description: Product image
+  videos:
+  - path: assets/videos/intro.mp4
+    description: Introductory clip
+  - path: assets/videos/outro.mp4
+    description: Closing clip

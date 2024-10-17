@@ -1,0 +1,38 @@
+ad_brief:
+  overall_requirements:
+  - name: Clear Objective
+    description: The ad brief should clearly define the main goal of the advertisement.
+  - name: Target Audience
+    description: Specify the demographic and psychographic details of the intended audience.
+  - name: Key Message
+    description: Outline the primary message or value proposition to be communicated.
+  - name: Tone and Style
+    description: Describe the desired tone and style, such as formal, casual, humorous, etc.
+  - name: Platform Specifications
+    description: Include any platform-specific requirements or preferences.
+  - name: Budget and Timeline
+    description: Provide details on the budget constraints and timeline for delivery.
+
+  creative_requirements:
+  - name: Visual Elements
+    description: Specify any required images, videos, or graphics for the ad.
+  - name: Text Content
+    description: Outline the text or copy to be included in the ad.
+  - name: Call to Action
+    description: Define the desired action or response from the audience.
+  - name: Brand Guidelines
+    description: Include any brand-specific guidelines or restrictions for the ad.
+  - name: Legal Compliance
+    description: Ensure that the ad complies with relevant laws and regulations.
+
+  technical_requirements:
+  - name: File Formats
+    description: Specify the required file formats for images, videos, and other assets.
+  - name: Resolution and Quality
+    description: Define the resolution and quality standards for visual assets.
+  - name: Aspect Ratio
+    description: Specify the aspect ratio for videos or images based on the platform.
+  - name: Duration
+    description: Set the duration limits for videos or animations.
+  - name: Sound and Music
+    description: Include any requirements or restrictions related to sound or music.

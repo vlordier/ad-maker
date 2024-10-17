@@ -1,0 +1,16 @@
+platforms:
+- name: TikTok
+  aspect_ratio: 9:16
+  max_duration: 60
+- name: Instagram
+  aspect_ratio: 1:1
+  max_duration: 60
+- name: YouTube Reels
+  aspect_ratio: 9:16
+  max_duration: 60
+- name: Snapchat
+  aspect_ratio: 9:16
+  max_duration: 60
+- name: Facebook
+  aspect_ratio: 1:1
+  max_duration: 60
